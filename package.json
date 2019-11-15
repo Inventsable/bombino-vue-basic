@@ -6,11 +6,11 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "sign": "node ./src/utils/dev/npmCommands.js sign",
-    "switch": "node ./src/utils/dev/npmCommands.js switch",
-    "update": "node ./src/utils/dev/npmCommands.js update",
-    "register": "node ./src/utils/dev/npmCommands.js register",
-    "help": "node ./src/utils/dev/npmCommands.js help"
+    "sign": "bombino-cmd sign",
+    "switch": "bombino-cmd switch",
+    "update": "bombino-cmd update",
+    "register": "bombino-cmd register",
+    "help": "bombino-cmd help"
   },
   "dependencies": {
     "core-js": "^3.1.2",
@@ -22,6 +22,7 @@
     "@vue/cli-plugin-eslint": "^4.0.0",
     "@vue/cli-service": "^4.0.0",
     "babel-eslint": "^10.0.1",
+    "bombino-commands": "^1.0.1",
     "boxen": "^4.1.0",
     "chalk": "^2.4.2",
     "eslint": "^5.16.0",
