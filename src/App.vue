@@ -26,6 +26,10 @@ import menus from "./components/menus.vue";
 // https://github.com/Inventsable/starlette
 import starlette from "starlette";
 
+// Dynamic identification object that reports all panel and host information:
+// https://github.com/Inventsable/CEP-Spy
+import spy from "cep-spy";
+
 export default {
   name: "app",
   components: {
