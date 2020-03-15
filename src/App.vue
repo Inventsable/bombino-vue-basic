@@ -2,105 +2,48 @@
   <div id="app">
     <!--
       This is the root of your panel
-      Content should go inside this #app element 
+      Content should go inside this #app element
     -->
-    <div style="width: 100%; display: flex; justify-content: center;">
+    <Panel>
       <img alt="Vue logo" src="./assets/logo.png" />
-    </div>
-    <!--
-      Example of importing a component
-    -->
-    <HelloWorld msg="Welcome to Your Vue CLI panel" />
+      <HelloWorld msg="Welcome to Your Vue CLI panel" />
+    </Panel>
+    <Menus refresh debug />
   </div>
 </template>
 
 <script>
-// You can access this App.vue file from any other component via `this.$root.$children[0]`
-// See `./components/HelloWorld.vue` for example of CSInterface and this.app
+// Utility components, see here:
+// https://github.com/Inventsable/lokney
+import { Menus, Panel } from "lokney";
+/*
+  Panel component above also includes:
+    - Starlette UI theme and color library: 
+      https://github.com/Inventsable/starlette
+    - CEP-Spy identification and app utility:
+      https://github.com/Inventsable/cep-spy
+ These are still installed into this panel and can be used when needed like so:
+ import spy from 'cep-spy'
 
-// Create your own components and import them here
-import HelloWorld from "./components/HelloWorld.vue";
-import menus from "./components/menus.vue";
-
-// Dynamic CSS variables that automatically handle all app themes and changes:
-// https://github.com/Inventsable/starlette
-import starlette from "starlette";
-
-// Dynamic identification object that reports all panel and host information:
-// https://github.com/Inventsable/CEP-Spy
-import spy from "cep-spy";
+ NOTES: 
+  - Starlette is already active in your panel! There's no need to initialize it.
+  - Need CSInterface or a script? You can use the script-path attribute of Panel to launch scripts or utilities:
+    https://github.com/Inventsable/lokney/tree/master/components/Panel
+*/
 
 export default {
-  name: "app",
+  name: "App",
   components: {
-    HelloWorld,
-    menus
+    Menus,
+    Panel
   },
-  data: () => ({
-    csInterface: null
-  }),
   mounted() {
-    this.csInterface = new CSInterface();
-
-    // Dynamic color handling library.
-    // https://github.com/Inventsable/starlette
-    starlette.init();
-  },
-  methods: {
-    dispatchEvent(name, data) {
-      var event = new CSEvent(name, "APPLICATION");
-      event.data = data;
-      this.csInterface.dispatchEvent(event);
-    },
-    loadScript(path) {
-      this.csInterface.evalScript(`$.evalFile('${path}')`);
-    }
+    // If you need CEP-Spy:
+    // let spy = require('cep-spy').default;
+    // console.log(spy)
   }
 };
 </script>
 
 <style>
-/* Various helper styles to match application theme */
-@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
-:root {
-  --quad: cubic-bezier(0.48, 0.04, 0.52, 0.96);
-  --quart: cubic-bezier(0.76, 0, 0.24, 1);
-  --quint: cubic-bezier(0.84, 0, 0.16, 1);
-
-  background-color: var(--color-bg);
-  color: var(--color-default);
-  font-family: "Open Sans", sans-serif;
-  font-size: 10px;
-}
-
-#app::-webkit-scrollbar {
-  display: block;
-}
-body::-webkit-scrollbar {
-  width: 0px;
-}
-
-::-webkit-scrollbar {
-  background-color: var(--color-scrollbar);
-  width: var(--width-scrollbar-track);
-}
-::-webkit-scrollbar-thumb {
-  width: var(--width-scrollbar-track);
-  background: var(--color-scrollbar-thumb);
-  border-radius: var(--radius-scrollbar-thumb);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-scrollbar-thumb-hover);
-}
-::-webkit-scrollbar-resizer {
-  display: none;
-  width: 0px;
-  background-color: transparent;
-}
-::-webkit-scrollbar-button {
-  height: 0px;
-}
-::-webkit-scrollbar-corner {
-  display: none;
-}
 </style>

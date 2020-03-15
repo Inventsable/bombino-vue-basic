@@ -10,22 +10,6 @@ export default {
   props: {
     msg: String
   },
-  computed: {
-    // Use as this.app
-    app() {
-      return this.$root.$children[0];
-    },
-    // Use as this.cs
-    cs() {
-      return this.app.csInterface;
-    }
-  },
-  mounted() {
-    console.log("Top-level root instance (App.vue):");
-    console.log(this.app);
-    console.log("CSInteface:");
-    console.log(this.cs);
-  }
 };
 </script>
 
