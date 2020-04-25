@@ -5,8 +5,7 @@
       Content should go inside this #app element
     -->
     <Panel>
-      <img alt="Vue logo" src="./assets/logo.png" />
-      <HelloWorld msg="Welcome to Your Vue CLI panel" />
+      <HelloWorld msg="Bombino basic" />
     </Panel>
     <Menus refresh debug />
   </div>
@@ -35,7 +34,8 @@ export default {
   name: "App",
   components: {
     Menus,
-    Panel
+    Panel,
+    HelloWorld: require('./components/HelloWorld.vue').default
   },
   mounted() {
     // If you need CEP-Spy:
