@@ -13,9 +13,9 @@
     "help": "bombino-cmd help"
   },
   "dependencies": {
-    "cep-spy": "^1.2.1",
+    "cep-spy": "^1.2.2",
     "core-js": "^3.1.2",
-    "lokney": "^1.0.5",
+    "lokney": "^1.0.6",
     "vue": "^2.6.10"
   },
   "devDependencies": {
