@@ -15,6 +15,9 @@
 // Utility components, see here:
 // https://github.com/Inventsable/lokney
 import { Menus, Panel } from "lokney";
+
+import { evalScript } from "workaround";
+
 /*
   Panel component above also includes:
     - Starlette UI theme and color library: 
@@ -35,13 +38,22 @@ export default {
   components: {
     Menus,
     Panel,
-    HelloWorld: require('./components/HelloWorld.vue').default
+    HelloWorld: require("./components/HelloWorld.vue").default,
   },
   mounted() {
     // If you need CEP-Spy:
-    // let spy = require('cep-spy').default;
-    // console.log(spy)
-  }
+    let spy = require("cep-spy").default;
+    console.log(spy);
+
+    // If you need to run JSX script:
+    evalScript(`alert("Hello World")`).then((result) => {
+      console.log(result); // This is only relevant if you need to return a value or execute code after the script
+    });
+
+    // You can also use async/await, though you'll need the async keyword prefix for mounted() or any particular method using it:
+    let someScripting = await evalScript(`alert("I run first")`);
+    console.log("I run second, since we're using async/await");
+  },
 };
 </script>
 

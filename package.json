@@ -16,7 +16,8 @@
     "cep-spy": "latest",
     "core-js": "^3.1.2",
     "lokney": "latest",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "workaround": "latest"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.0.0",
