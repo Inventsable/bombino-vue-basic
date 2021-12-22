@@ -16,7 +16,7 @@
 // https://github.com/Inventsable/lokney
 import { Menus, Panel } from "lokney";
 
-import { evalScript } from "workaround";
+import { evalScript } from "cluecumber";
 
 /*
   Panel component above also includes:
@@ -40,13 +40,14 @@ export default {
     Panel,
     HelloWorld: require("./components/HelloWorld.vue").default,
   },
-  mounted() {
+  async mounted() {
     // If you need CEP-Spy:
     let spy = require("cep-spy").default;
     console.log(spy);
 
     // If you need to run JSX script:
     evalScript(`alert("Hello World")`).then((result) => {
+      console.log("I might run first, second, or third because I'm thenable");
       console.log(result); // This is only relevant if you need to return a value or execute code after the script
     });
 
